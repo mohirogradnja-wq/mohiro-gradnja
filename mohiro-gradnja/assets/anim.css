@@ -1,0 +1,42 @@
+/* MOHIRO gradnja: 3D preloader i animacije (aktivno samo kad se anim.js učita) */
+
+/* Preloader */
+html.mh-pre-dark #preloader{background:#121212;overflow:hidden}
+html.mh-pre-dark #preloader .loader-content{display:none}
+html.mh-anim #preloader{opacity:1 !important;visibility:visible !important;transition:none !important}
+#mh-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.mh-pre-text{
+  position:absolute;left:0;right:0;bottom:14vh;text-align:center;pointer-events:none;
+  font-family:"Inter",system-ui,sans-serif;color:#c7a663
+}
+.mh-pre-text b{display:block;font-weight:600;font-size:clamp(28px,4.2vw,42px);letter-spacing:.16em}
+.mh-pre-text small{display:block;margin-top:10px;color:#ece8e0;font-size:12px;letter-spacing:.55em;padding-left:.55em}
+.mh-pre-text i{display:block;margin:18px auto 0;font-style:normal;font-size:11px;letter-spacing:.24em;color:#c7a663;opacity:.85}
+.mh-pre-line{display:block;width:min(280px,60vw);height:1px;background:#c7a663;margin:16px auto 0;transform-origin:50% 50%}
+
+/* GSAP preuzima pojavljivanje sekcija */
+html.mh-anim .reveal{opacity:1;transform:none;transition:none}
+
+/* 3D pozadina u hero sekciji */
+.hero{position:relative;overflow:hidden}
+.hero > .container{position:relative;z-index:1}
+#mh-hero-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0}
+
+/* Naginjanje kartica i odsjaj */
+.service{position:relative}
+html.mh-anim .card:hover,html.mh-anim .service:hover{transform:none}
+.mh-tilt{transform-style:preserve-3d;will-change:transform}
+.mh-glare{
+  position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:4;opacity:0;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.28),rgba(255,255,255,0) 55%);
+  transition:opacity .4s ease
+}
+.mh-tilt:hover > .mh-glare{opacity:1}
+
+/* Reči u naslovima */
+.mh-word{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.mh-word > span{display:inline-block;transform-origin:50% 100%;will-change:transform}
+
+@media (prefers-reduced-motion:reduce){
+  #mh-hero-bg{display:none}
+}
